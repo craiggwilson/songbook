@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Songbook.Structure
 {
-    public enum NodeKind
+    public interface ISongParser
     {
-        Chord,
-        Line,
-        Song,
-        Text,
-        WhiteSpace
+        SongNode Parse(string song);
     }
 }

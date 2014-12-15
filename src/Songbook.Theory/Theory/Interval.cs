@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace Songbook.Theory
 {
-    public class ChordInterval : IEquatable<ChordInterval>
+    public class Interval : IEquatable<Interval>
     {
-        public ChordInterval(ChordIntervalKind kind, int value)
+        public Interval(IntervalKind kind, int value)
         {
             Kind = kind;
             Value = value;
         }
 
-        public ChordIntervalKind Kind { get; private set; }
+        public IntervalKind Kind { get; private set; }
 
         public int Value { get; private set; }
 
         public override bool Equals(object obj)
         {
-            return Equals(obj as ChordInterval);
+            return Equals(obj as Interval);
         }
 
-        public bool Equals(ChordInterval other)
+        public bool Equals(Interval other)
         {
             if (other == null)
                 return false;
@@ -41,7 +41,7 @@ namespace Songbook.Theory
             return Kind.ToString() + " " + Value;
         }
 
-        public static bool operator ==(ChordInterval a, ChordInterval b)
+        public static bool operator ==(Interval a, Interval b)
         {
             if (Object.ReferenceEquals(a, b))
                 return true;
@@ -52,34 +52,34 @@ namespace Songbook.Theory
             return a.Equals(b);
         }
 
-        public static bool operator !=(ChordInterval a, ChordInterval b)
+        public static bool operator !=(Interval a, Interval b)
         {
             return !(a == b);
         }
 
-        public static ChordInterval Augmented(int interval)
+        public static Interval Augmented(int interval)
         {
-            return new ChordInterval(ChordIntervalKind.Augmented, interval);
+            return new Interval(IntervalKind.Augmented, interval);
         }
 
-        public static ChordInterval Diminished(int interval)
+        public static Interval Diminished(int interval)
         {
-            return new ChordInterval(ChordIntervalKind.Diminished, interval);
+            return new Interval(IntervalKind.Diminished, interval);
         }
 
-        public static ChordInterval Major(int interval)
+        public static Interval Major(int interval)
         {
-            return new ChordInterval(ChordIntervalKind.Major, interval);
+            return new Interval(IntervalKind.Major, interval);
         }
 
-        public static ChordInterval Minor(int interval)
+        public static Interval Minor(int interval)
         {
-            return new ChordInterval(ChordIntervalKind.Minor, interval);
+            return new Interval(IntervalKind.Minor, interval);
         }
 
-        public static ChordInterval Perfect(int interval)
+        public static Interval Perfect(int interval)
         {
-            return new ChordInterval(ChordIntervalKind.Perfect, interval);
+            return new Interval(IntervalKind.Perfect, interval);
         }
     }
 }

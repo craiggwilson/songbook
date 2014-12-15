@@ -7,9 +7,5 @@
 *.user
 *.sln.docstates
 
-# Build results
-[Dd]ebug/
-[Rr]elease/
-
 # NuGet Packages Directory
 packages

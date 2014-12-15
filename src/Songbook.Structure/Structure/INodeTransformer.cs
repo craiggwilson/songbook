@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Songbook.Structure
+namespace Songbook.Structure.Parsing
 {
-    public enum NodeKind
+    public interface INodeTransformer
     {
-        Chord,
-        Line,
-        Song,
-        Text,
-        WhiteSpace
+        Node Transform(Node node);
     }
 }

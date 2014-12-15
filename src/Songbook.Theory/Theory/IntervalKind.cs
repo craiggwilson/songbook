@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Songbook.Theory
 {
-    public enum ChordIntervalKind
+    public enum IntervalKind
     {
         Major,
         Minor,

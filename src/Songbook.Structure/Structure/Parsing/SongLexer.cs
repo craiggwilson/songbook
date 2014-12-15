@@ -12,6 +12,10 @@ namespace Songbook.Structure.Parsing
         private int _character;
         private int _line;
 
+        public SongLexer(string input)
+            : this(new BufferedCharInputStream(input, 10))
+        { }
+
         public SongLexer(IInputStream<char> input)
             : base(10)
         {

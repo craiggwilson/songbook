@@ -20,6 +20,8 @@ namespace Songbook.Structure.Visitors
                     return VisitSong((SongNode)node);
                 case NodeKind.Text:
                     return VisitText((TextNode)node);
+                case NodeKind.WhiteSpace:
+                    return VisitWhiteSpace((WhiteSpaceNode)node);
             }
 
             throw new NotSupportedException(string.Format("Unknown node of kind '{0}'", node.Kind));
@@ -69,6 +71,11 @@ namespace Songbook.Structure.Visitors
         }
 
         protected virtual Node VisitText(TextNode node)
+        {
+            return node;
+        }
+
+        protected virtual Node VisitWhiteSpace(WhiteSpaceNode node)
         {
             return node;
         }

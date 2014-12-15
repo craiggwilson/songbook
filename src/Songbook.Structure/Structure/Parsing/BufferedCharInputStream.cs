@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Songbook.Structure.Parsing
 {
-    internal class BufferedCharInputStream : AbstractBufferedInputStream<char>
+    public class BufferedCharInputStream : AbstractBufferedInputStream<char>
     {
         private readonly TextReader _input;
 

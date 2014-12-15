@@ -9,11 +9,11 @@ namespace Songbook.Theory
 {
     public class Chord : IEquatable<Chord>
     {
-        public Chord(string name, Note root, IEnumerable<ChordInterval> intervals, Note baseNote)
+        public Chord(string name, Note root, IEnumerable<Interval> intervals, Note baseNote)
         {
             Name = name;
             RootNote = root;
-            Intervals = (intervals ?? new List<ChordInterval>()).ToList().AsReadOnly();
+            Intervals = (intervals ?? new List<Interval>()).ToList().AsReadOnly();
             BaseNote = baseNote;
         }
 
@@ -28,7 +28,7 @@ namespace Songbook.Theory
             get { return BaseNote != null; }
         }
 
-        public ReadOnlyCollection<ChordInterval> Intervals { get; private set; }
+        public ReadOnlyCollection<Interval> Intervals { get; private set; }
 
         public override bool Equals(object obj)
         {
