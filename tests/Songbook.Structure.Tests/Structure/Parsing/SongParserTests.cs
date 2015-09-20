@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Songbook.Structure.Visitors;
 using Xunit;
 
 namespace Songbook.Structure.Parsing
@@ -14,26 +13,33 @@ namespace Songbook.Structure.Parsing
         [Fact]
         public void Should_parse_song_correctly()
         {
-            const string text = "[Verse]\r\nAm  C   G\rI'm the only one in the world\rAm  C  D\nHello, goodbye world";
+            const string text = "[Verse]\r\nAm  C   G\rI'm the only one in the world\rAm  C  D\nHello, goodbye world\r\n\r\n[Chorus]\r\nD  Em\r\nAwesome!!!";
 
-            var subject = new SongParser(new [] 
-            {
-                new ChordLineTransformer(new ParsingChordLookup())
-            });
-            
+            var subject = new SimpleTwoLineTextSongParser(ParsingChordLookup.Instance);
+
             var song = subject.Parse(text);
 
-            song.Lines.Count.Should().Be(5);
+            song.Sections.Count.Should().Be(2);
+            var section = song.Sections[0];
+            section.Name.Should().Be("Verse");
+            section.Lines.Count.Should().Be(6);
 
-            song.Lines[0].Parts.Count.Should().Be(1);
-            song.Lines[1].Parts.Count.Should().Be(5);
-            song.Lines[1].Parts[0].Kind.Should().Be(NodeKind.Chord);
+            section.Lines[0].Parts.Count.Should().Be(1);
+            section.Lines[1].Parts.Count.Should().Be(5);
+            section.Lines[1].Parts[0].Kind.Should().Be(NodeKind.Chord);
 
-            song.Lines[2].Parts[0].Kind.Should().Be(NodeKind.Text);
+            section.Lines[2].Parts[0].Kind.Should().Be(NodeKind.Text);
 
-            song.Lines[3].Parts[0].Kind.Should().Be(NodeKind.Chord);
+            section.Lines[3].Parts[0].Kind.Should().Be(NodeKind.Chord);
 
-            song.Lines[4].Parts[0].Kind.Should().Be(NodeKind.Text);
+            section.Lines[4].Parts[0].Kind.Should().Be(NodeKind.Text);
+
+            section = song.Sections[1];
+            section.Lines.Count.Should().Be(3);
+            section.Name.Should().Be("Chorus");
+            section.Lines[0].Parts.Count.Should().Be(1);
+            section.Lines[1].Parts.Count.Should().Be(3);
+            section.Lines[2].Parts.Count.Should().Be(1);
         }
     }
 }

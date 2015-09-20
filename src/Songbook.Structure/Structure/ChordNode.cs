@@ -7,19 +7,15 @@ using Songbook.Theory;
 
 namespace Songbook.Structure
 {
-    public class ChordNode : LinePartNode
+    public sealed class ChordNode : LinePartNode
     {
-        public ChordNode(LineInfo lineInfo, Chord chord)
-            : base(lineInfo)
+        public ChordNode(Chord chord)
         {
             Chord = chord;
         }
 
-        public Chord Chord { get; private set; }
+        public Chord Chord { get; }
 
-        public override NodeKind Kind
-        {
-            get { return NodeKind.Chord; }
-        }
+        public override NodeKind Kind => NodeKind.Chord;
     }
 }

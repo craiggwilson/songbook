@@ -6,19 +6,15 @@ using System.Threading.Tasks;
 
 namespace Songbook.Structure
 {
-    public class WhiteSpaceNode : LinePartNode
+    public sealed class WhiteSpaceNode : LinePartNode
     {
-        public WhiteSpaceNode(LineInfo lineInfo, string text)
-            : base(lineInfo)
+        public WhiteSpaceNode(string text)
         {
             Text = text;
         }
 
-        public override NodeKind Kind
-        {
-            get { return NodeKind.WhiteSpace; }
-        }
+        public override NodeKind Kind => NodeKind.WhiteSpace;
 
-        public string Text { get; private set; }
+        public string Text { get; }
     }
 }

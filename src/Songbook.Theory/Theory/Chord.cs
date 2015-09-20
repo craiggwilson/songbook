@@ -17,23 +17,17 @@ namespace Songbook.Theory
             BaseNote = baseNote;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; }
 
-        public Note RootNote { get; private set; }
+        public Note RootNote { get; }
 
-        public Note BaseNote { get; private set; }
+        public Note BaseNote { get; }
 
-        public bool HasBaseNote
-        {
-            get { return BaseNote != null; }
-        }
+        public bool HasBaseNote => BaseNote != null;
 
-        public ReadOnlyCollection<Interval> Intervals { get; private set; }
+        public ReadOnlyCollection<Interval> Intervals { get; }
 
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as Chord);
-        }
+        public override bool Equals(object obj) => Equals(obj as Chord);
 
         public bool Equals(Chord other)
         {
@@ -43,20 +37,11 @@ namespace Songbook.Theory
             return Name == other.Name;
         }
 
-        public override int GetHashCode()
-        {
-            return Name.GetHashCode();
-        }
+        public override int GetHashCode() => Name.GetHashCode();
 
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
 
-        public string GetProperName()
-        {
-            return ChordNamer.GetProperName(this);
-        }
+        public string GetProperName() => ChordNamer.GetProperName(this);
 
         public Chord Transpose(int semitoneOffset)
         {

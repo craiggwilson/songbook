@@ -8,13 +8,6 @@ namespace Songbook.Structure
 {
     public abstract class Node
     {
-        protected Node(LineInfo lineInfo)
-        {
-            LineInfo = lineInfo;
-        }
-
         public abstract NodeKind Kind { get; }
-
-        public LineInfo LineInfo { get; private set; }
     }
 }

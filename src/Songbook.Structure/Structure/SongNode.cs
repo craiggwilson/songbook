@@ -1,25 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Songbook.Structure
 {
-    public class SongNode : Node
+    public sealed class SongNode : Node
     {
-        public SongNode(LineInfo lineInfo, IEnumerable<LineNode> lines)
-            : base(lineInfo)
+        public SongNode(IEnumerable<PropertyNode> properties, IEnumerable<SectionNode> sections)
         {
-            Lines = (lines ?? new List<LineNode>()).ToList().AsReadOnly();
+            Properties = properties as ReadOnlyCollection<PropertyNode>;
+            if (Properties == null)
+            {
+                Properties = (properties ?? new List<PropertyNode>()).ToList().AsReadOnly();
+            }
+
+            Sections = sections as ReadOnlyCollection<SectionNode>;
+            if (Sections == null)
+            {
+                Sections = (sections ?? new List<SectionNode>()).ToList().AsReadOnly();
+            }
         }
 
-        public override NodeKind Kind
-        {
-            get { return NodeKind.Song; }
-        }
+        public override NodeKind Kind => NodeKind.Song;
 
-        public ReadOnlyCollection<LineNode> Lines { get; private set; }
+        public ReadOnlyCollection<PropertyNode> Properties { get; }
+
+        public ReadOnlyCollection<SectionNode> Sections { get; }
+
+        public SongNode Update(IEnumerable<PropertyNode> properties, IEnumerable<SectionNode> sections)
+        {
+            if (properties != Properties || sections != Sections)
+            {
+                return new SongNode(properties, sections);
+            }
+
+            return this;
+        }
     }
 }

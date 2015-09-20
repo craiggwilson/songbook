@@ -10,15 +10,12 @@ namespace Songbook.Structure.Parsing
     {
         public TokenKind Kind { get; private set; }
 
-        public LineInfo LineInfo { get; private set; }
-
         public string Text { get; private set; }
 
-        public Token(TokenKind kind, string text, int line, int character)
+        public Token(TokenKind kind, string text)
         {
             Kind = kind;
             Text = text;
-            LineInfo = new LineInfo(line, character);
         }
     }
 }

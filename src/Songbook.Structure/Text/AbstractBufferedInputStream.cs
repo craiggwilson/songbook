@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Songbook.Structure.Parsing
+namespace Songbook.Text
 {
     public abstract class AbstractBufferedInputStream<T> : IInputStream<T>
     {
@@ -26,7 +23,7 @@ namespace Songbook.Structure.Parsing
 
         protected AbstractBufferedInputStream(int blockSize)
         {
-            if(blockSize <= 0)
+            if (blockSize <= 0)
                 throw new ArgumentOutOfRangeException("blockSize", "blockSize must be greater than 0");
 
             _buffer = new List<T>();

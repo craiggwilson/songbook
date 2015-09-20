@@ -77,7 +77,7 @@ namespace Songbook.Structure.Parsing
 
         private Tuple<bool, Chord> ParseChord(string chord)
         {
-            return new ParsingChordLookup().Lookup(chord);
+            return ParsingChordLookup.Instance.Lookup(chord);
         }
 
         private void AssertChord(Chord chord, string rootNote, string baseNote, params Interval[] intervals)

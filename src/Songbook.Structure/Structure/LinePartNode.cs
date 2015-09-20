@@ -8,8 +8,5 @@ namespace Songbook.Structure
 {
     public abstract class LinePartNode : Node
     {
-        protected LinePartNode(LineInfo lineInfo)
-            : base(lineInfo)
-        { }
     }
 }

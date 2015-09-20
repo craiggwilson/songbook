@@ -101,7 +101,7 @@ namespace Songbook.Theory
 
         private Chord ParseChord(string chord)
         {
-            return new ParsingChordLookup().Lookup(chord).Item2;
+            return ParsingChordLookup.Instance.Lookup(chord).Item2;
         }
     }
 }

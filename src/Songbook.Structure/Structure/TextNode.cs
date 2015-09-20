@@ -6,19 +6,15 @@ using System.Threading.Tasks;
 
 namespace Songbook.Structure
 {
-    public class TextNode : LinePartNode
+    public sealed class TextNode : LinePartNode
     {
-        public TextNode(LineInfo lineInfo, string text)
-            : base(lineInfo)
+        public TextNode(string text)
         {
             Text = text;
         }
 
-        public override NodeKind Kind
-        {
-            get { return NodeKind.Text; }
-        }
+        public override NodeKind Kind => NodeKind.Text;
 
-        public string Text { get; private set; }
+        public string Text { get; }
     }
 }

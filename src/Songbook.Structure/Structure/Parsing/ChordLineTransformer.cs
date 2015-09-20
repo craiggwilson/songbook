@@ -3,26 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Songbook.Structure.Parsing;
 using Songbook.Theory;
 
-namespace Songbook.Structure.Visitors
+namespace Songbook.Structure.Parsing
 {
     /// <summary>
     /// If all the "words" on a line are chords, then transform them all to chords. Otherwise, leave the line alone.
     /// </summary>
-    public class ChordLineTransformer : Visitor, INodeTransformer
+    public class ChordLineTransformer : NodeVisitor
     {
         private readonly IChordLookup _chordLookup;
 
         public ChordLineTransformer(IChordLookup chordLookup)
         {
             _chordLookup = chordLookup;
-        }
-
-        public Node Transform(Node node)
-        {
-            return Visit(node);
         }
 
         protected override Node VisitLine(LineNode node)
@@ -37,7 +31,7 @@ namespace Songbook.Structure.Visitors
                 newParts.Add((LinePartNode)newPart);
             }
 
-            return new LineNode(node.LineInfo, newParts);
+            return new LineNode(newParts);
         }
 
         protected override Node VisitText(TextNode node)
@@ -47,7 +41,7 @@ namespace Songbook.Structure.Visitors
 
             var result = _chordLookup.Lookup(node.Text);
             if (result.Item1)
-                return new ChordNode(node.LineInfo, result.Item2);
+                return new ChordNode(result.Item2);
 
             return node;
         }

@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Songbook.Text;
 using Songbook.Theory;
 
 namespace Songbook.Structure.Parsing
 {
     public class ParsingChordLookup : IChordLookup
     {
+        public static ParsingChordLookup Instance = new ParsingChordLookup();
+
+        private ParsingChordLookup()
+        { }
+
         public Tuple<bool, Chord> Lookup(string chord)
         {
             var parser = new ChordParser(chord);
@@ -16,7 +22,7 @@ namespace Songbook.Structure.Parsing
             {
                 return Tuple.Create(true, parser.Parse());
             }
-            catch(ParseException)
+            catch (ParseException)
             {
                 return Tuple.Create(false, (Chord)null);
             }

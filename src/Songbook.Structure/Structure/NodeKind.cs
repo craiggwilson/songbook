@@ -10,8 +10,10 @@ namespace Songbook.Structure
     {
         Chord,
         Line,
+        Property,
+        Section,
         Song,
         Text,
-        WhiteSpace
+        WhiteSpace,
     }
 }

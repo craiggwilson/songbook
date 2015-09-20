@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Songbook.Structure.Parsing
+namespace Songbook.Text
 {
     public class BufferedCharInputStream : AbstractBufferedInputStream<char>
     {
@@ -14,7 +10,7 @@ namespace Songbook.Structure.Parsing
         public BufferedCharInputStream(TextReader input, int blockSize)
             : base(blockSize)
         {
-            if(input == null)
+            if (input == null)
                 throw new ArgumentNullException("input");
 
             _input = input;
