@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
-using Songbook.Structure.Parsing;
+﻿using FluentAssertions;
 using Xunit;
 
 namespace Songbook.Theory
@@ -101,7 +95,7 @@ namespace Songbook.Theory
 
         private Chord ParseChord(string chord)
         {
-            return ParsingChordLookup.Instance.Lookup(chord).Item2;
+            return Chord.Parse(chord);
         }
     }
 }

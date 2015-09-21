@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Songbook.Structure.Parsing
+namespace Songbook.Formats.TwoLineTextFormat
 {
     [Serializable]
     public class ParseException : Exception
@@ -15,6 +11,7 @@ namespace Songbook.Structure.Parsing
         protected ParseException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)
-            : base(info, context) { }
+            : base(info, context)
+        { }
     }
 }

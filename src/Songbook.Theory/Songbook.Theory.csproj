@@ -41,9 +41,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Theory\Chord.cs" />
+    <Compile Include="Theory\ChordNamer.cs" />
+    <Compile Include="Theory\ChordParseException.cs" />
     <Compile Include="Theory\Interval.cs" />
     <Compile Include="Theory\IntervalKind.cs" />
-    <Compile Include="Theory\ChordNamer.cs" />
+    <Compile Include="Theory\ChordParser.cs" />
     <Compile Include="Theory\Note.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

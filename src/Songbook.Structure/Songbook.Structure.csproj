@@ -40,11 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Structure\ISongParser.cs" />
-    <Compile Include="Structure\Parsing\ParsingChordLookup.cs" />
-    <Compile Include="Structure\IChordLookup.cs" />
-    <Compile Include="Structure\Parsing\ParseException.cs" />
-    <Compile Include="Structure\Parsing\SimpleTwoLineTextSongParser.cs" />
+    <Compile Include="Formats\TwoLineTextFormat\TwoLineTextFormatReader.cs" />
+    <Compile Include="Formats\TwoLineTextFormat\TwoLineTextFormatWriter.cs" />
+    <Compile Include="Structure\ISongFormat.cs" />
+    <Compile Include="Formats\ParsingChordLookup.cs" />
+    <Compile Include="Formats\IChordLookup.cs" />
+    <Compile Include="Formats\TwoLineTextFormat\ParseException.cs" />
+    <Compile Include="Formats\TwoLineTextFormat\SectionNamingVisitor.cs" />
+    <Compile Include="Formats\TwoLineTextFormat\TwoLineTextSongFormat.cs" />
     <Compile Include="Structure\ChordNode.cs" />
     <Compile Include="Structure\LinePartNode.cs" />
     <Compile Include="Structure\LineNode.cs" />
@@ -53,16 +56,16 @@
     <Compile Include="Structure\SectionNode.cs" />
     <Compile Include="Structure\SongNode.cs" />
     <Compile Include="Structure\PropertyNode.cs" />
-    <Compile Include="Structure\Parsing\ChordLineTransformer.cs" />
+    <Compile Include="Formats\TwoLineTextFormat\ChordVisitor.cs" />
     <Compile Include="Structure\NodeVisitor.cs" />
     <Compile Include="Structure\TextNode.cs" />
-    <Compile Include="Structure\Parsing\Token.cs" />
+    <Compile Include="Formats\TwoLineTextFormat\Token.cs" />
     <Compile Include="Text\AbstractBufferedInputStream.cs" />
     <Compile Include="Text\BufferedCharInputStream.cs" />
     <Compile Include="Text\IInputStream.cs" />
-    <Compile Include="Structure\Parsing\SongLexer.cs" />
+    <Compile Include="Formats\TwoLineTextFormat\SongLexer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Structure\Parsing\TokenKind.cs" />
+    <Compile Include="Formats\TwoLineTextFormat\TokenKind.cs" />
     <Compile Include="Structure\WhiteSpaceNode.cs" />
   </ItemGroup>
   <ItemGroup>

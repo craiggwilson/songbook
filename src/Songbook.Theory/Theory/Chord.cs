@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Songbook.Theory
 {
@@ -13,7 +11,11 @@ namespace Songbook.Theory
         {
             Name = name;
             RootNote = root;
-            Intervals = (intervals ?? new List<Interval>()).ToList().AsReadOnly();
+            Intervals = intervals as ReadOnlyCollection<Interval>;
+            if (Intervals == null)
+            {
+                Intervals = (intervals ?? new List<Interval>()).ToList().AsReadOnly();
+            }
             BaseNote = baseNote;
         }
 
@@ -39,9 +41,9 @@ namespace Songbook.Theory
 
         public override int GetHashCode() => Name.GetHashCode();
 
-        public override string ToString() => Name;
-
         public string GetProperName() => ChordNamer.GetProperName(this);
+
+        public override string ToString() => Name;
 
         public Chord Transpose(int semitoneOffset)
         {
@@ -67,6 +69,11 @@ namespace Songbook.Theory
                 result = result.Remove(result.Length - (1 + BaseNote.Name.Length));
 
             return result;
+        }
+
+        public static Chord Parse(string chord)
+        {
+            return new ChordParser(chord).Parse();
         }
 
         public static bool operator ==(Chord a, Chord b)

@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Songbook.Theory;
+﻿using System.Collections.Generic;
+using Songbook.Structure;
 
-namespace Songbook.Structure.Parsing
+namespace Songbook.Formats.TwoLineTextFormat
 {
     /// <summary>
     /// If all the "words" on a line are chords, then transform them all to chords. Otherwise, leave the line alone.
     /// </summary>
-    public class ChordLineTransformer : NodeVisitor
+    public class ChordVisitor : NodeVisitor
     {
         private readonly IChordLookup _chordLookup;
 
-        public ChordLineTransformer(IChordLookup chordLookup)
+        public ChordVisitor(IChordLookup chordLookup)
         {
             _chordLookup = chordLookup;
         }

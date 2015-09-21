@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Songbook.Theory
 {
-    public class ChordNamer
+    internal static class ChordNamer
     {
         public static string GetProperName(Chord chord)
         {

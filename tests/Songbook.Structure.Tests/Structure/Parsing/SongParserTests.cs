@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using FluentAssertions;
+using Songbook.Formats;
+using Songbook.Formats.TwoLineTextFormat;
 using Xunit;
 
 namespace Songbook.Structure.Parsing
@@ -15,9 +13,9 @@ namespace Songbook.Structure.Parsing
         {
             const string text = "[Verse]\r\nAm  C   G\rI'm the only one in the world\rAm  C  D\nHello, goodbye world\r\n\r\n[Chorus]\r\nD  Em\r\nAwesome!!!";
 
-            var subject = new SimpleTwoLineTextSongParser(ParsingChordLookup.Instance);
+            var subject = new SimpleTwoLineTextFormat(ParsingChordLookup.Instance);
 
-            var song = subject.Parse(text);
+            var song = subject.Read(new StringReader(text));
 
             song.Sections.Count.Should().Be(2);
             var section = song.Sections[0];

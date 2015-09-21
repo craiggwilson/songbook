@@ -43,7 +43,7 @@ namespace Songbook.Structure
                 Visit(node.Parts));
         }
 
-        private Node VisitProperty(PropertyNode node)
+        protected virtual Node VisitProperty(PropertyNode node)
         {
             return node;
         }

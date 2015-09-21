@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Songbook.Theory;
 
-namespace Songbook.Structure.Parsing
+namespace Songbook.Formats
 {
-    public enum TokenKind
+    public interface IChordLookup
     {
-        WhiteSpace,
-        Text,
-        EndOfLine,
-        EOF
+        Tuple<bool, Chord> Lookup(string chord);
     }
 }

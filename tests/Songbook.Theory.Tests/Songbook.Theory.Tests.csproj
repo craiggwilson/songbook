@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Theory\ChordNamerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Theory\ChordParserTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Songbook.Structure\Songbook.Structure.csproj">

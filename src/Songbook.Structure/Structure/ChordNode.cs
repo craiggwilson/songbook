@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Songbook.Theory;
+﻿using Songbook.Theory;
 
 namespace Songbook.Structure
 {
