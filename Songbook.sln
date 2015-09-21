@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Songbook.Structure", "src\Songbook.Structure\Songbook.Structure.csproj", "{E924E645-0E26-44A1-A9F9-98E9E1F19EB7}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Songbook.Theory.Tests", "tests\Songbook.Theory.Tests\Songbook.Theory.Tests.csproj", "{32D62BB8-5B84-4C3A-AFE8-96680324B17E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Songbook.Structure.Tests", "tests\Songbook.Structure.Tests\Songbook.Structure.Tests.csproj", "{A4B8626C-4BDE-4946-8640-CA23FFC0AF4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Songbook.Windows", "src\Songbook.Windows\Songbook.Windows.csproj", "{8FE57721-EDFF-441D-89B8-D01627C02265}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A4B8626C-4BDE-4946-8640-CA23FFC0AF4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4B8626C-4BDE-4946-8640-CA23FFC0AF4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4B8626C-4BDE-4946-8640-CA23FFC0AF4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FE57721-EDFF-441D-89B8-D01627C02265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE57721-EDFF-441D-89B8-D01627C02265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE57721-EDFF-441D-89B8-D01627C02265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE57721-EDFF-441D-89B8-D01627C02265}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
