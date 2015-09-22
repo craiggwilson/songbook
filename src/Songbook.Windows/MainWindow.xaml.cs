@@ -52,5 +52,10 @@ namespace Songbook.Windows
         {
             flyoutSettings.Visibility = visibility;
         }
+
+        private void lbSongs_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ViewModel.SongsTab.LoadSong((SongListItemViewModel)lbSongs.SelectedItem);
+        }
     }
 }

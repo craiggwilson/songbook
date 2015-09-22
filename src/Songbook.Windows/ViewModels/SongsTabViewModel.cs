@@ -20,7 +20,6 @@ namespace Songbook.Windows.ViewModels
         public SongsTabViewModel()
         {
             OpenDirectoryCommand = ReactiveCommand.Create();
-            SongSelected = ReactiveCommand.Create();
 
             _songs = this.WhenAnyValue(x => x.CurrentDirectory)
                 .Select(LoadSongsFromDirectory)
@@ -30,11 +29,11 @@ namespace Songbook.Windows.ViewModels
 
             this.WhenAnyValue(x => x.Filter, x => x.Songs)
                 .Subscribe(t => UpdateFilteredSongs(t.Item1, t.Item2));
+
+            _currentSong = new SongViewModel(null);
         }
 
         public ReactiveCommand<object> OpenDirectoryCommand { get; }
-
-        public ReactiveCommand<object> SongSelected { get; }
 
         public string CurrentDirectory
         {
@@ -51,6 +50,7 @@ namespace Songbook.Windows.ViewModels
         public SongViewModel CurrentSong
         {
             get { return _currentSong; }
+            set { this.RaiseAndSetIfChanged(ref _currentSong, value); }
         }
 
         public List<SongListItemViewModel> Songs
@@ -63,6 +63,11 @@ namespace Songbook.Windows.ViewModels
             get { return _filteredSongs; }
         }
 
+        public void LoadSong(SongListItemViewModel songItem)
+        {
+            CurrentSong = new SongViewModel(songItem.Path);
+        }
+
         private List<SongListItemViewModel> LoadSongsFromDirectory(string directory)
         {
             if (directory == null)
@@ -73,7 +78,7 @@ namespace Songbook.Windows.ViewModels
             return Directory.EnumerateFiles(directory)
                 .Select(f => new SongListItemViewModel
                 {
-                    FileName = f,
+                    Path = f,
                     Name = Path.GetFileNameWithoutExtension(f)
                 })
                 .ToList();

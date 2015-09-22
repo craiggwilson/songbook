@@ -137,6 +137,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Songbook.Structure\Songbook.Structure.csproj">
+      <Project>{e924e645-0e26-44a1-a9f9-98e9e1f19eb7}</Project>
+      <Name>Songbook.Structure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Songbook.Theory\Songbook.Theory.csproj">
+      <Project>{b5da9f8a-be9d-47d4-b49f-4e99311d171a}</Project>
+      <Name>Songbook.Theory</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
