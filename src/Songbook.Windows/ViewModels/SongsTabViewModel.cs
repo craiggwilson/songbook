@@ -11,6 +11,7 @@ namespace Songbook.Windows.ViewModels
 {
     public class SongsTabViewModel : ReactiveObject
     {
+        private SongViewModel _currentSong;
         private string _currentDirectory;
         private string _filter;
         private ReactiveList<SongListItemViewModel> _filteredSongs;
@@ -18,7 +19,8 @@ namespace Songbook.Windows.ViewModels
 
         public SongsTabViewModel()
         {
-            OpenDirectory = ReactiveCommand.Create();
+            OpenDirectoryCommand = ReactiveCommand.Create();
+            SongSelected = ReactiveCommand.Create();
 
             _songs = this.WhenAnyValue(x => x.CurrentDirectory)
                 .Select(LoadSongsFromDirectory)
@@ -30,7 +32,9 @@ namespace Songbook.Windows.ViewModels
                 .Subscribe(t => UpdateFilteredSongs(t.Item1, t.Item2));
         }
 
-        public ReactiveCommand<object> OpenDirectory { get; }
+        public ReactiveCommand<object> OpenDirectoryCommand { get; }
+
+        public ReactiveCommand<object> SongSelected { get; }
 
         public string CurrentDirectory
         {
@@ -42,6 +46,11 @@ namespace Songbook.Windows.ViewModels
         {
             get { return _filter; }
             set { this.RaiseAndSetIfChanged(ref _filter, value); }
+        }
+
+        public SongViewModel CurrentSong
+        {
+            get { return _currentSong; }
         }
 
         public List<SongListItemViewModel> Songs

@@ -28,8 +28,13 @@ namespace Songbook.Windows
             ViewModel = new MainViewModel();
             InitializeComponent();
 
-            ViewModel.SongsTab.OpenDirectory
-                .Subscribe(o => ChooseSongsDirectory());
+            ViewModel.SongsTab.OpenDirectoryCommand
+                .Subscribe(_ => ChooseSongsDirectory());
+
+            ViewModel.ShowSettingsCommand
+                .Subscribe(_ => SetSettingsVisibility(Visibility.Visible));
+            ViewModel.HideSettingsCommand
+                .Subscribe(_ => SetSettingsVisibility(Visibility.Collapsed));
         }
 
         public MainViewModel ViewModel { get; }
@@ -41,6 +46,11 @@ namespace Songbook.Windows
             {
                 ViewModel.SongsTab.CurrentDirectory = System.IO.Path.GetDirectoryName(dialog.FileName);
             }
+        }
+
+        private void SetSettingsVisibility(Visibility visibility)
+        {
+            flyoutSettings.Visibility = visibility;
         }
     }
 }
