@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="Songbook.Universal.Shell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Songbook.Universal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Default">
+    <SplitView x:Name="ShellSplitView"
+               DisplayMode="CompactInline"
+               PanePlacement="Left"
+               IsPaneOpen="False"
+               CompactPaneLength="48"
+               OpenPaneLength="150"
+               PaneBackground="{StaticResource SplitViewBackgroundBrush}">
+        <SplitView.Pane>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <RadioButton Style="{StaticResource SplitViewMenuButtonStyle}"
+                             Click="Menu_Clicked" />
+
+                <StackPanel Grid.Row="1">
+                    <RadioButton Tag="&#xE109;"
+                                 Content="New Song" 
+                                 Style="{StaticResource SplitViewNavButtonStyle}"
+                                 GroupName="Nav">
+                    </RadioButton>
+                    <RadioButton Tag="&#xE1D3;"
+                                 Content="Libraries" 
+                                 Style="{StaticResource SplitViewNavButtonStyle}"
+                                 GroupName="Nav">
+                    </RadioButton>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2">
+                    <RadioButton Tag="&#xE713;"
+                                 Content="Settings" 
+                                 Style="{StaticResource SplitViewNavButtonStyle}"
+                                 GroupName="Nav" />
+                </StackPanel>
+
+            </Grid>
+        </SplitView.Pane>
+    </SplitView>
+</Page>
